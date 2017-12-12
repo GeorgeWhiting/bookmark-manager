@@ -11,6 +11,7 @@ class Link
   property :id, Serial
   property :title, String
   property :url, String
+  property :tag, String
 
 end
 # Now let's set up a connection with a database

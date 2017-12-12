@@ -7,4 +7,11 @@ feature 'Adding links' do
     expect(page).to have_content('https://www.tednewton.com')
     expect(page).to have_content('Teds shit website')
   end
+
+  scenario "user can tag their submitted bookmarks" do
+    visit '/links/new'
+    fill_in('tag', with: 'memes')
+    click_button('Add')
+    expect(page).to have_content('memes')
+  end
 end
