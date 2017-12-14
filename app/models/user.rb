@@ -1,4 +1,6 @@
 require 'bcrypt'
+require 'dm-validations'
+
 class User
   include DataMapper::Resource
   include BCrypt
@@ -7,8 +9,13 @@ class User
   property :email, String
   property :password_digest, Text
   #because 50 chars isnt enough for the hashing algorithm
+  attr_reader :password
+  attr_accessor :password_confirmation
+
+  validates_confirmation_of :password
 
   def password=(password)
+    @password = password
     self.password_digest = BCrypt::Password.create(password)
   end
 
