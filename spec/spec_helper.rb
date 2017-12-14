@@ -5,8 +5,9 @@ require 'capybara/rspec'
 require 'rspec'
 require './app/models/link'
 require './app/models/tag'
+require './app/models/user'
 require 'database_cleaner'
-
+require_relative 'web_helper'
 #require File.join(File.dirname(__FILE__), '/..', 'app/app.rb')
 require './app/app'
  Capybara.app = BookmarkManager

@@ -1,5 +1,6 @@
 feature 'Adding tags' do
   scenario "user can tag their submitted bookmarks" do
+    sign_up
     visit '/links/new'
     fill_in('addlink', with: 'https://www.tednewton.com')
     fill_in('link_name', with: 'Teds shit website')
@@ -10,6 +11,7 @@ feature 'Adding tags' do
   end
 
   scenario "user can add multiple tags" do
+    sign_up
     visit '/links/new'
     fill_in('addlink', with: 'https://www.tednewton.com')
     fill_in('link_name', with: 'Teds shit website')
