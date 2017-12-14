@@ -5,11 +5,11 @@
     <li>
       Title: <%= link.title %>
       URL:   <a href= "http://<%= link.url %>"><%= link.url %></a>
-      Tag:   <%= link.tags.map(&:name).join(" ,")   %>
+      Tag:   <%= link.tags.map(&:name).join(", ")   %>
     </li>
   <% end %>
 </ul>
 <form action="/tags" method="post">
-  <input type="text" name="id">
+  <input type="text" name="tag_name">
   <input type="submit" value="search">
 </form>
