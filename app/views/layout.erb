@@ -8,9 +8,9 @@
       Welcome,
       <%= current_user.email %>
     <% end %>
-    <% if flash[:notice] %>
+    <% if flash[:error] %>
       <div id="notice">
-        <%= flash[:notice] %>
+        <%= flash[:error] %>
       </div>
     <% end %>
     <%= yield %>
