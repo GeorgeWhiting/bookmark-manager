@@ -20,4 +20,12 @@ class User
     @password = password
     self.password_digest = BCrypt::Password.create(password)
   end
+
+  def password_auth
+    @password = BCrypt::Password.new(password_digest)
+  end
+
+  def authenticate(password)
+    password_auth == password
+  end
 end

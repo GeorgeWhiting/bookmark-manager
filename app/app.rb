@@ -7,11 +7,30 @@ class BookmarkManager < Sinatra::Base
   enable :sessions
   set :session_secret, 'session'
   register Sinatra::Flash
+  include BCrypt
 
   helpers do
     def current_user
       @current_user ||= User.get(session[:user_id])
     end
+  end
+
+  get '/' do
+    erb :sign_in
+  end
+
+  post '/sign_in' do
+    @user =  User.first(email: params[:email])
+    if @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect '/links'
+    else
+      redirect '/'
+    end
+  end
+
+  post '/users/new' do
+    redirect '/users/new'
   end
 
   get '/users/new' do
