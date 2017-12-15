@@ -21,10 +21,11 @@ class BookmarkManager < Sinatra::Base
 
   post '/sign_in' do
     @user =  User.first(email: params[:email])
-    if @user.authenticate(params[:password])
+    if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect '/links'
     else
+      flash.now[:error] = 'Invalid username or password'
       redirect '/'
     end
   end
