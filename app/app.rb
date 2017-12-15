@@ -25,7 +25,11 @@ class BookmarkManager < Sinatra::Base
       session[:user_id] = @user.id
       redirect '/links'
     else
-      flash.now[:notice] = @user.errors.first
+      errors = []
+      @user.errors.each do |e|
+        errors << e
+      end
+      flash.now[:notice] = errors.join("<br>")
       erb :new_user
     end
   end
