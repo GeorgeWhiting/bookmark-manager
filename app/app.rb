@@ -4,7 +4,6 @@ require 'sinatra/flash'
 require_relative 'data_mapper_setup'
 
 class BookmarkManager < Sinatra::Base
-
   enable :sessions
   set :session_secret, 'session'
   register Sinatra::Flash
@@ -27,10 +26,9 @@ class BookmarkManager < Sinatra::Base
       session[:user_id] = @user.id
       redirect '/links'
     else
-      flash.now[:notice] = "Passwords do not match"
+      flash.now[:notice] = 'Passwords do not match'
       erb :new_user
     end
-
   end
 
   get '/links' do
@@ -45,7 +43,7 @@ class BookmarkManager < Sinatra::Base
 
   post '/links' do
     link = Link.first_or_create(url: params[:addlink], title: params[:link_name])
-    params[:tag].split(", ").each do |tag|
+    params[:tag].split(', ').each do |tag|
       a_tag = Tag.first_or_create(name: tag)
       link.tags << a_tag
     end
@@ -63,6 +61,5 @@ class BookmarkManager < Sinatra::Base
     erb :search_links
   end
 
-  run! if app_file == $0
-
+  run! if app_file == $PROGRAM_NAME
 end

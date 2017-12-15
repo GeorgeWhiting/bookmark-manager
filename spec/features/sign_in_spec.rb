@@ -8,9 +8,16 @@ feature 'has a functioning login page' do
   end
 
   scenario 'doesnt create a new user if password confirmation fails' do
-    sign_up_badly
-    expect { sign_up_badly }.to change(User, :count).by(0)
+    sign_up(password_confirmation: 'notcorrect')
+    expect {sign_up(password_confirmation: 'notcorrect')}.to change(User, :count).by(0)
     expect(page).to have_current_path('/users')
     expect(page).to have_content "Passwords do not match"
+  end
+
+  scenario 'user cannot sign up with a blank email address' do
+    sign_up(email: '')
+    expect {sign_up(email: '')}.to change(User, :count).by(0)
+    expect(page).to have_current_path('/users')
+    expect(page).to have_content "Invalid Email"
   end
 end

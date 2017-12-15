@@ -1,15 +1,7 @@
-def sign_up
+def sign_up(email: 'example@coldmail.com', password: 'password', password_confirmation: 'password')
   visit '/users/new'
-  fill_in('email', with: 'example@coldmail.com')
-  fill_in('password', with: 'password')
-  fill_in('password_confirmation', with: 'password')
-  click_button('Sign Up')
-end
-
-def sign_up_badly
-  visit '/users/new'
-  fill_in('email', with: 'example@coldmail.com')
-  fill_in('password', with: 'password')
-  fill_in('password_confirmation', with: 'notcorrect')
+  fill_in(:email, with: email)
+  fill_in(:password, with: password)
+  fill_in(:password_confirmation, with: password_confirmation)
   click_button('Sign Up')
 end

@@ -1,6 +1,15 @@
 <form action="/users" method="post">
+  <label for="email">
+    Email:
+  </label>
   <input type="email" name="email" value="<%= @user.email %>">
+  <label for="pasword">
+    Password:
+  </label>
   <input type="password" name="password">
+  <label for="pasword_confirmation">
+    Confirm password:
+  </label>
   <input type="password" name="password_confirmation">
   <input type="submit" value="Sign Up">
 </form>
