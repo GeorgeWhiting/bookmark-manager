@@ -16,6 +16,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/' do
+    flash.keep[:error] = 'Invalid username or password'
     erb :sign_in
   end
 
@@ -25,7 +26,6 @@ class BookmarkManager < Sinatra::Base
       session[:user_id] = @user.id
       redirect '/links'
     else
-      flash.now[:error] = 'Invalid username or password'
       redirect '/'
     end
   end
