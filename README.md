@@ -1,6 +1,8 @@
-## INTRODUCTION
-This week we are building a bookmark manager.
-Below are the user stories
+## Makers Academy week 4 challenge - Bookmark Manager
+
+Week 4 - Databases
+
+Challenge - Build a webapp that stores web bookmarks in a database
 
 ## USER STORIES
 
@@ -25,11 +27,27 @@ As browser users
 So we can find what we are looking for
 We want to be able to filter links by a tag
 ```
-## SQL
 
-It means Structured Query Language
+## To use
 
-## CRUD
+- Clone this repo
+- cd bookmark-manager
+- brew install postgresql
+- bundle
+- psql
+- CREATE DATABASE "bookmark_manager_development";
+- to run tests: CREATE DATABASE "bookmark_manager_test";
+- \q to exit psql
+- rackup
+
+## Features
+
+- Sign up
+- Sign in/out
+- Add bookmark (with name, url and tag)
+- Search by tag
+
+## Notes taken during project
 
 CRUD stands for Create, Read, Update, and Delete.  
 They are the four basic functions of persistent storage.  
@@ -65,3 +83,7 @@ Example: UPDATE "students" SET NAME = 'a name' WHERE ID = 1;
 #### Delete
 
 Example: DELETE FROM "students" WHERE ID = 1;
+
+## Screenshots
+
+![](https://i.imgur.com/HCObGkw.png)
